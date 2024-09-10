@@ -2,6 +2,12 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import matplotlib.patches as patches
 
+def create_palette_matplotlib(n):
+    cmap = plt.get_cmap('hsv')  # Puoi cambiare 'hsv' con qualsiasi colormap disponibile in matplotlib
+    colors = [cmap(i / n) for i in range(n)]
+    colors = [(1, 1, 1, 1)] + colors
+    return ListedColormap(colors)
+
 def show_cropped_nuclei(img, labels, x_bottom=0, y_bottom=0, x_width=500, y_width=500, alpha = 0.3):
     
     nuclei_matrix = (labels > 0).astype(int)
