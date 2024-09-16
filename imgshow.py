@@ -69,8 +69,8 @@ def show_cropped_nuclei2(img, labels, details=None,
 
     # select details of the cropped nuclei and translate according to new coordinates
     coord, points, prob = details['coord'], details['points'], details['prob']    
-    coord = [[coord[idx][0] - x_bottom, coord[idx][1] - y_bottom] for idx in cropped_nuclei_idx]
-    points = [points[idx] - [x_bottom, y_bottom] for idx in cropped_nuclei_idx]
+    coord = [[coord[idx][0] - y_bottom, coord[idx][1] - x_bottom] for idx in cropped_nuclei_idx]
+    points = [points[idx] - [y_bottom, x_bottom] for idx in cropped_nuclei_idx]
     prob = [prob[idx] for idx in cropped_nuclei_idx]
 
     # panel 1 - full image with red rectangle on the selection
